@@ -824,7 +824,7 @@ for ([1]변수=초기값; [2][5]조건문; [4][7]증가분) {
 
 
 
-### for
+### for문
 
 ```javascript
 <!DOCTYPE html>
