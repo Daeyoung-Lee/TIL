@@ -46,7 +46,27 @@ client side에서 JavaScript등장
 
     JavaScript는 client side에서 작성해야 했는데 Node가 나오면서 client에서 작성한 JavaScript가 server에서도 작동
 
-    
+## 설치
+
+**환경설정**#1 기본 설정 상태로 설치 진행Visual Studio Code 설치 ⇒ https://code.visualstudio.com/docs/?dv=winnode.js 설치 ⇒ https://nodejs.org/ko/![img](images/pasted image 0-1580434159267.png)
+\#2 명령 프롬프트 실행 (시작 > cmd.exe)
+\#3 작업 디렉터리(폴더) 생성C:\Users\myanj>cd \
+C:\>mkdir javascript
+C:\>cd javascript
+C:\javascript>
+\#4 node 설치 여부를 확인C:\javascript>node --versionv12.14.1
+\#5 Visual Studio Code 실행 > File > Open Folder 메뉴 선택![img](images/pasted image 0-1580434159276.png)![img](images/pasted image 0-1580434159285.png)
+\#6 새문서 생성 및 작성![img](images/pasted image 0-1580434159292.png)![img](images/pasted image 0-1580434159305.png)
+
+<!DOCTYPE html><html>  <head>    <script>      console.log("#1");    </script>  </head>  <body>    <script>      console.log("#2");    </script>  </body></html>
+
+\#7 http-server 를 설치https://www.npmjs.com/package/http-server
+C:\javascript>npm init -yC:\javascript>npm install http-server -g
+C:\Users\*PC_USER_NAME*\AppData\Roaming\npm\node_modules
+C:\javascript>npx http-serverStarting up http-server, serving ./Available on: http://172.26.225.177:8080 http://10.0.75.1:8080 http://59.29.224.11:8080 http://192.168.56.1:8080 http://192.168.133.1:8080 http://10.0.0.1:8080 http://127.0.0.1:8080
+브라우저를 통해서 http://localhost:8080/code1-3.html 로 접속
+
+
 
 ### HTML(HyperText Markup Language)
 

@@ -848,19 +848,93 @@ ajax 호출 _
 
 
 
+## jQuery 정리
+
+### jQuery에서 가장 중요한 것은 `Selector`  
+
+셀렉터를 제대로 사용하려면 문서구조가 제대로 만들어져야한다.
+
+
+
+1. 선택자 `$("...")`
+2. 화면제어 `.css` 
+3. 값 제어 `.text`, `html`, `attr` 등 
+4. 루프`.each` 
+5. 이벤트 `.click`, `mouse~` 등
+6. `UI plug-in`
+
+7. 통신 `$.ajax` 비동기 통신방식, json 데이터 형태
+
+
+
+\<div id = "content" class = "bgblue" data = "123">
+
+`<div` 부분은 태그(요소)
+
+뒤 `id ~ "123"`은 속성(attribute)
+
+`id`는 이름
+
+`="content"` 는 값
+
+\<a href = "..."> 의 `<a>` 태그는 뒤에 속성을 꼭 가져야한다.
+
+---
+
+# LAB
+
+사이트 미리 보기를 제작
+
+* jquery UI에서 제공하는 TAB 위젯을 이용
+* 미리 보기 사이트 명과 주소(URL)은 ajax 통신으로 가져오기
+* /preview.html ⇒ 미리 보기 사이트 
+* /siteinfo.html ⇒ 미리 보기 사이트 명과 주소를 포함한 JSON 형식의 파일
+
+
+
+## siteinfo.html
 
 
 
 
 
+# CORS
+
+## 설치
+
+https://chrome.google.com/webstore/category/extensions?hl=koAllow CORS: Access-Control-Allow-Origin 확장 프로그램 설치![img](images/pasted image 0.png)![img](images/pasted image 0.png)
+
+
+
+웹은 교차 자원 요청이 가능
 
 
 
 
 
+SOP(Same Origin Policy)
+
+> 자바스크립트에서 다른 사이트에서 무엇인가 가져와서 사용하는 것을 막은 것
+>
+> 왜? 보안 때문에
+>
+> 어떤 기준으로? Origin
+>
+> Origin은 스킴 + 호스트 + 포트
+>
+> 브라우저에 적용된 보안기술
+>
+> 
+
+ajax가 될 수 있도록 만들어주는 근본기술(XHR, XMLHttpRequest)
 
 
 
+웹이 발전하면서 완화정책이 필요 => CORS(Cross-Origin-Resourse-Sharing)
+
+응답해더
+
+CORS => Acess-Controll-Allow-Origin : (*)을 
 
 
 
