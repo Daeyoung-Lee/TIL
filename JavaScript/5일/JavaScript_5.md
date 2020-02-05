@@ -894,6 +894,150 @@ ajax 호출 _
 
 ## siteinfo.html
 
+```html
+{
+"siteinfos" : [
+        { "name" : "jQuery", "URL" : "https://jquery.com/" }, 
+        { "name" : "w3school", "URL" : "https://www.w3schools.com/" }, 
+        { "name" : "야휴", "URL" : "https://www.yahoo.com" }
+    ]
+}
+
+```
+
+
+
+## preview.html
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- 필요한 JS파일과 CSS 파일을 임포트 -->
+        <script src="jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+        <script src="jquery-ui-1.12.1/jquery-ui.js"></script>
+        <link rel="stylesheet" href="jquery-ui-1.12.1/jquery-ui.css">
+
+        <!-- 처리 기능 -->
+        <script>
+            $(function() {
+                // 서버로부터 미리보기(이름, 주소) 정보를 가져와서 출력
+                // api.jquery.com/jquery/ajax 에서 오류날 시 찾아보기
+                // .fail~ 이 부분
+                $.ajax({
+                    url: "http://localhost:8080/siteinfo.html",
+                    /*type: "get", 생략가능, 기본값 */
+                    dataType: "json", // content-type이 이걸로 결정됨, 중요 , 위 html과 관계없이
+                }).done(data => {
+                    console.log(data);
+                    data.siteinfos.forEach(site => {
+                        let name = site.name;
+                        let url = site.URL;
+                        // 서버로부터 전달받은 데이터를 이용해서 화면을 구성
+                        let id = $('li').length + 1;
+                        let li = `<li><a href="#tab${id}" url="${url}">${name}</a></li>`;
+                        let div = `<div id="tab${id}">탭 내용 ${id}</div>`;
+
+                        $('#tabs > ul').append(li); // 아래 body tabs > ul 에 추가!!!
+                        $('#tabs').append(div);
+                    });
+
+                // 탭 위젯을 생성
+                $("#tabs").tabs();
+                })
+                
+                .fail(function(jqXHR, testStatus, errorThrown) {
+                    console.log(errorThrown);
+                });
+                
+                /*
+                javascript에서 만들어진 위에 것들은 적용 안됨. 아래 만들어진 것만 적용됨
+                아래  $('#tabs').on()으로 동적으로 만들어 진 것들을 이벤트 처리해줄 수 있다. 중요
+                $('a').click(function() {
+                    let href = $(this).attr("href");
+                    console.log(href);
+                });
+                */
+                $('#tabs').on('click', 'a', function() {
+                    let href = $(this).attr("href");
+                    let url = $(this).attr("url");
+
+                    $(href).load(url);
+                });
+
+               // $('a:first').trigger('click'); 아직 안됨
+
+            });
+        </script>
+
+    </head>
+
+    <body>
+        <!-- 탭 UI를 적용할 태그 -->
+        <div id="tabs">
+            <!-- 탭 제목 -->
+            <ul>
+            </ul>
+            <!-- 탭 본문 -->
+        </div>
+    </body>
+</html>
+```
+
+## lab.html
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/jquery-ui-1.12.1/jquery-ui.css">
+    <link rel="stylesheet" href="/jquery-ui-1.12.1/jquery-ui.theme.css">
+    <script src="/jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+    <script src="/jquery-ui-1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function() {
+            $("#tabs").tabs();
+        
+            $.ajax({
+            url: "http://localhost:8080/siteinfo.html",
+            type: "GET",
+            dataType: "json",
+            success: function(data) {
+                $.each(data, function() {
+                    alert(this.URL);
+                })
+            },
+            error: function(data) {
+                alert("error");
+            }
+            });
+        });
+
+    </script>
+    <style>        
+    </style>
+</head>
+<body>    
+    <div id="tabs">
+        <ul>
+          <li><a href="#naver">네이버</a></li>
+          <li><a href="#daum">다음</a></li>
+          <li><a href="#google">구글</a></li>
+        </ul>
+        <div id="naver">
+          <p>맛집 예약과 관련한 컨텐츠</p>
+        </div>
+        <div id="daum">
+          <p>병원 예약과 관련한 컨텐츠</p>
+        </div>
+        <div id="google">
+          <p>공유자동차 예약과 관련한 컨텐츠</p>
+        </div>
+    </div>
+</body>
+</html>
+```
+
 
 
 
