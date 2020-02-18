@@ -787,16 +787,21 @@ public class HelloJava {
 
 ```java
 import java.io.IOException;
-import java.util.Scanner; // Ctrl + Shift + o
+import java.util.Scanner;
 
-public class HelloJava {
-
+public class HelloJava 
+{
 	public static void main(String[] args) throws IOException {
 		Scanner sc = new Scanner(System.in);
-		
-		String input = sc.nextLine();
-		System.out.println(input);
-}
+		while(sc.hasNextLine()) {
+			String input = sc.nextLine();
+			System.out.println(">>> " + input);
+			if (input.equals("X"))
+				break;
+		}
+		System.out.print("END");
+		sc.close();
+	}
 }
 ```
 
@@ -804,8 +809,8 @@ public class HelloJava {
 
 ## 비교
 
-* 기본 타입 값 비교 ⇒ == 사용
-* 문자열 타입 값 비교 ⇒ equals() 메소드 사용
+* 기본 타입 값 비교 ⇒ `==` 사용
+* 문자열 타입 값 비교 ⇒ `equals()` 메소드 사용
 
 ```java
 import java.io.IOException;
