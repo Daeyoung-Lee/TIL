@@ -644,6 +644,8 @@ public class SportsCar extends Car {
 >
 > 다형성 : 메소드 재정의(overriding)와 타입 변환(promotion, casting)으로 구현
 
+## 자동 타입 변환(promotion)
+
 ![img](images/pasted image 0-1582175575231.png)
 
 ![img](images/pasted image 0-1582175577673.png)
